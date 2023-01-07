@@ -1,0 +1,17 @@
+baseURL = 'https://www.yourmet.de/'
+languageCode = 'en-us'
+title = 'yourmet'
+
+theme = 'compost'
+
+# required
+[build]
+_merge = 'deep'
+
+# required
+[markup]
+_merge = 'deep'
+
+# for better seo
+[minify]
+_merge = 'deep'

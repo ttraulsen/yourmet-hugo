@@ -1,0 +1,3 @@
+[submodule "www.yourmet.de/themes/compost"]
+	path = www.yourmet.de/themes/compost
+	url = https://github.com/canstand/compost
