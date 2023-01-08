@@ -22,6 +22,9 @@ workflows:
           html-proofer: true
           source: www.yourmet.de/
       - deploy:
+          context:
+            - aws
+            - yourmet
           filters:
             branches:
               only: main
