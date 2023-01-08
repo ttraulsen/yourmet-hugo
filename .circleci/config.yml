@@ -12,7 +12,7 @@ jobs:
           arguments: |
             --acl public-read \
             --cache-control "max-age=86400"
-          aws-region: $AWS_REGION
+          aws-region: AWS_REGION
           from: www.yourmet.de/public
           to: $YOURMET_TARGET
 workflows:
@@ -22,8 +22,9 @@ workflows:
           html-proofer: true
           source: www.yourmet.de/
       - deploy:
-          context: aws
-#            - yourmet
+          context: 
+            - aws
+            - yourmet
           filters:
             branches:
               only: main
