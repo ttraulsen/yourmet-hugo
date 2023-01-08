@@ -8,8 +8,19 @@ jobs:
     docker:
       - image: node/lts-alpine
     steps:
-      - cd www.yourmet.de
-      - npm install
+    - checkout
+    - run:
+        name: Checkout Submodules if Needed
+        command: |
+          if [ -f ".gitmodules" ]; then
+            git submodule sync
+            git submodule update --init --recursive
+          fi
+    - run:
+        name: Preinstall packages
+        command: |
+          cd www.yourmet.de
+          npm install
   deploy:
     docker:
       - image: 'cimg/python:3.10'
