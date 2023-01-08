@@ -4,6 +4,12 @@ orbs:
   aws-s3: circleci/aws-s3@3.1.1
 version: 2.1
 jobs:
+  preinstall:
+    docker:
+      - image: node/lts-alpine
+    steps:
+      - cd www.yourmet.de
+      - npm install
   deploy:
     docker:
       - image: 'cimg/python:3.10'
@@ -18,9 +24,12 @@ jobs:
 workflows:
   main:
     jobs:
+      - preinstall
       - hugo/build:
           html-proofer: true
           source: www.yourmet.de/
+          requires:
+            - preinstall
       - deploy:
           context: 
             - aws
